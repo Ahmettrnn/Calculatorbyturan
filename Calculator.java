@@ -58,8 +58,10 @@ public class Calculator extends JFrame implements ActionListener {
         historyLabel = new JLabel("History: ");
         add(historyLabel, BorderLayout.WEST);
 
-       // Image img1=new ImageIcon(Calculator.class.getResource("/1011863.png")).getImage();
-        //calculateButton.setIcon(new ImageIcon(img1));
+       
+        Image jicon=new ImageIcon(Calculator.class.getResource("/1011863.png")).getImage();
+        setIconImage(jicon);
+        //Uygulamanın sol üst köşesindeki iconu değiştirdim.
 
         Image img2 = new ImageIcon(Calculator.class.getResource("/1011863.png")).getImage();
         img2 = img2.getScaledInstance(400, 200, Image.SCALE_DEFAULT);
@@ -70,7 +72,7 @@ public class Calculator extends JFrame implements ActionListener {
         setLocationRelativeTo(null);
         setVisible(true);
     }
-
+    //Buttonlara görevlerini verdim.
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() instanceof JButton) {
@@ -147,5 +149,16 @@ public class Calculator extends JFrame implements ActionListener {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new Calculator());
-    }
+        SwingUtilities.invokeLater(() -> {
+            try {
+               
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+
+           
+            
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+    });
+}
 }
