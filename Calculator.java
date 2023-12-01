@@ -1,4 +1,4 @@
-    import javax.swing.*;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,46 +15,62 @@ public class Calculator extends JFrame implements ActionListener {
         for (int i = 1; i <= 9; i++) {
             JButton button = new JButton("" + i);
             button.addActionListener(this);
+            button.setBackground(Color.YELLOW);
+            button.setForeground(Color.black);
+            button.setFont(new Font("Modern",Font.BOLD,15));
             p1.add(button);
         }
         JButton zeroButton = new JButton("0");
         zeroButton.addActionListener(this);
+        zeroButton.setFont(new Font("Modern",Font.BOLD,15));
+        zeroButton.setBackground(Color.yellow);
         p1.add(zeroButton);
         //Buttonun rengi ve fontu değiştirildi.
         JButton calculateButton = new JButton("Calculate");
         calculateButton.addActionListener(this);
-        calculateButton.setBackground(Color.BLUE);
-        calculateButton.setFont(new Font("Calibri",Font.BOLD,15));
+        calculateButton.setBackground(new Color(0, 206, 180));
+        calculateButton.setFont(new Font("Modern",Font.BOLD,15));
+        calculateButton.setForeground(Color.WHITE);
         p1.add(calculateButton);
 
         JButton plusButton = new JButton("+");
         plusButton.addActionListener(this);
+        plusButton.setFont(new Font("Modern",Font.BOLD,15));
+        plusButton.setBackground(Color.yellow);
         p1.add(plusButton);
 
         JButton minusButton = new JButton("-");
         minusButton.addActionListener(this);
+        minusButton.setFont(new Font("Modern",Font.BOLD,15));
+        minusButton.setBackground(Color.yellow);
         p1.add(minusButton);
 
         JButton multiplyButton = new JButton("x");
         multiplyButton.addActionListener(this);
+        multiplyButton.setFont(new Font("Modern",Font.BOLD,15));
+        multiplyButton.setBackground(Color.yellow);
         p1.add(multiplyButton);
 
         JButton divideButton = new JButton("÷");
         divideButton.addActionListener(this);
+        divideButton.setFont(new Font("Modern",Font.BOLD,15));
+        divideButton.setBackground(Color.yellow);
         p1.add(divideButton);
         //Buttonun rengi ve fontu değiştirildi.
         JButton refreshButton = new JButton("Refresh");
         refreshButton.addActionListener(this);
-        refreshButton.setBackground(Color.BLUE);
-        refreshButton.setFont(new Font("Calibri",Font.BOLD,15));
+        refreshButton.setBackground(Color.red);
+        refreshButton.setFont(new Font("Modern",Font.BOLD,20));
+        refreshButton.setForeground(Color.WHITE);
         
         //Panelin rengi değiştirildi.
         JPanel p2 = new JPanel(new BorderLayout());
         textField = new JTextField();
-        p2.setBackground(Color.BLUE);
-        p2.add(textField, BorderLayout.NORTH);
+        textField.setBackground(new Color(0, 206, 180));
+        p2.setBackground(new Color(0, 206, 180));
         p2.add(p1, BorderLayout.CENTER);
         p2.add(refreshButton, BorderLayout.SOUTH);
+      //p2.add(textField,BorderLayout.SOUTH);     //Yazarken yazdığın işlemleri görmek için kullanılan textfieldı sol alta koymak istiyorum fakat olmuyor.
         add(p2, BorderLayout.EAST);
        
         
@@ -63,6 +79,7 @@ public class Calculator extends JFrame implements ActionListener {
         resultTextArea = new JTextArea();
         resultTextArea.setEditable(false);
         add(new JScrollPane(resultTextArea), BorderLayout.CENTER);
+        resultTextArea.setBackground(new Color(0, 206, 180));
         
         //Labelin rengi değiştirildi.
         historyLabel = new JLabel("History: ");
@@ -80,9 +97,11 @@ public class Calculator extends JFrame implements ActionListener {
         p2.add(new JLabel(new ImageIcon(img2)), BorderLayout.PAGE_START);
 
         setSize(800, 400); // Genişlik artırıldı
+        setTitle("Calculator");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
+        setResizable(false);
     }
     
     //Buttonlara görevlerini verdim.
@@ -103,18 +122,6 @@ public class Calculator extends JFrame implements ActionListener {
             }
         }
     }
-    /*private void setButtonColors(Component[] components){
-        for (Component component: components){
-            if(component instanceof JButton){
-                JButton button=(JButton) component;
-                button.setBackground(Color.RED) ;
-                button.setForeground(Color.BLACK);
-                    
-                
-            }
-        }
-    } */
-
     private void calculateResult() {
         String expression = textField.getText();
         String[] elements = expression.split(" ");
@@ -172,7 +179,7 @@ public class Calculator extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new Calculator());
+        SwingUtilities.invokeLater(() -> new Calculator());  //Swing bileşenlerinin güvenli bir şekilde başlatılmasını sağlar(Lambda expressionsu kullanarak).
     
     };
 }
