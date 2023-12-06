@@ -67,10 +67,13 @@ public class Calculator extends JFrame implements ActionListener {
         JPanel p2 = new JPanel(new BorderLayout());
         textField = new JTextField();
         textField.setBackground(new Color(0, 206, 180));
+        textField.setForeground(Color.blue);
+        textField.setPreferredSize(new Dimension(500,20)); // Genişlik ve yükseklik ayarları
+
         p2.setBackground(new Color(0, 206, 180));
         p2.add(p1, BorderLayout.CENTER);
         p2.add(refreshButton, BorderLayout.SOUTH);
-      //p2.add(textField,BorderLayout.SOUTH);     //Yazarken yazdığın işlemleri görmek için kullanılan textfieldı sol alta koymak istiyorum fakat olmuyor.
+        p2.add(textField,BorderLayout.NORTH);     //Yazarken yazdığın işlemleri görmek için kullanılan textfieldı sol alta koymak istiyorum fakat olmuyor.
         add(p2, BorderLayout.EAST);
        
         
@@ -83,7 +86,7 @@ public class Calculator extends JFrame implements ActionListener {
         
         //Labelin rengi değiştirildi.
         historyLabel = new JLabel("History: ");
-        historyLabel.setBackground(Color.blue);
+        historyLabel.setForeground(Color.blue);
         add(historyLabel, BorderLayout.WEST);
         setVisible(true);
 
@@ -158,9 +161,14 @@ public class Calculator extends JFrame implements ActionListener {
 
             // JTextArea güncelleniyor
             resultTextArea.setText("Result: " + result);
+            resultTextArea.setForeground(Color.blue);
+            resultTextArea.setFont(new Font("Modern",Font.BOLD,20));
+            
+
 
             // JLabel güncelleniyor
-            historyLabel.setText(historyLabel.getText() + expression + " ");
+            historyLabel.setText(historyLabel.getText() + "\n"+ expression +" " );
+            historyLabel.setForeground(Color.blue);
 
             // JTextField temizleniyor
             textField.setText("");
@@ -173,6 +181,7 @@ public class Calculator extends JFrame implements ActionListener {
         // JTextArea ve JLabel güncelleniyor
         resultTextArea.setText("");
         historyLabel.setText("History: ");
+        
 
         // JTextField temizleniyor
         textField.setText("");
