@@ -66,6 +66,7 @@ public class Calculator extends JFrame implements ActionListener {
         //Panelin rengi değiştirildi.
         JPanel p2 = new JPanel(new BorderLayout());
         textField = new JTextField();
+<<<<<<< HEAD
         textField.setBackground(new Color(0, 206, 180));
         textField.setForeground(Color.blue);
         textField.setPreferredSize(new Dimension(500,20)); // Genişlik ve yükseklik ayarları
@@ -74,6 +75,14 @@ public class Calculator extends JFrame implements ActionListener {
         p2.add(p1, BorderLayout.CENTER);
         p2.add(refreshButton, BorderLayout.SOUTH);
         p2.add(textField,BorderLayout.NORTH);     //Yazarken yazdığın işlemleri görmek için kullanılan textfieldı sol alta koymak istiyorum fakat olmuyor.
+=======
+        textField.setBackground(Color.RED);
+        textField.setFont(new Font("Modern",Font.BOLD,20));  //Texfield güncellendi.
+        p2.setBackground(new Color(0, 206, 180));
+        p2.add(p1, BorderLayout.CENTER);
+        p2.add(refreshButton, BorderLayout.SOUTH);
+        p2.add(textField,BorderLayout.SOUTH);     
+>>>>>>> 6f05eec (Hatalar giderildi :))
         add(p2, BorderLayout.EAST);
        
         
@@ -81,6 +90,7 @@ public class Calculator extends JFrame implements ActionListener {
 
         resultTextArea = new JTextArea();
         resultTextArea.setEditable(false);
+        resultTextArea.setFont(new Font("Modern",Font.BOLD,20));
         add(new JScrollPane(resultTextArea), BorderLayout.CENTER);
         resultTextArea.setBackground(new Color(0, 206, 180));
         
@@ -100,7 +110,7 @@ public class Calculator extends JFrame implements ActionListener {
         p2.add(new JLabel(new ImageIcon(img2)), BorderLayout.PAGE_START);
 
         setSize(800, 400); // Genişlik artırıldı
-        setTitle("Calculator");
+        setTitle("CalculatorByTuran");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
